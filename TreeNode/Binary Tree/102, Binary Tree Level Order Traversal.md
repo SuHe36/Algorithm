@@ -65,3 +65,37 @@ class Solution {
     }
 }
 ```
+
+思路二： 也可以使用dfs， 每次遍历到新的一层时，就新建一个新的ArrayList，然后前序遍历，每次遍历到了该层的节点，就取出对应层的list， 添加在末尾。
+
+
+代码：
+```
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null){
+            return res;
+        }
+        dfs(res,root,0);
+        return res;
+    }
+    
+    public void dfs(List<List<Integer>> res, TreeNode root, int level){
+        if(res.size() -1 < level){
+            res.add(new ArrayList<>());
+        }
+        res.get(level).add(root.val);
+        
+        if(root.left != null){
+            dfs(res, root.left, level+1);
+        }
+        
+        if(root.right != null){
+            dfs(res, root.right, level+1);
+        }
+        
+        
+    }
+}
+```
