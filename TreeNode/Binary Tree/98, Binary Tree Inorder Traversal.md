@@ -108,7 +108,7 @@ class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         
-        TreeNode pre = new TreeNode(); //表示根节点的左子树额最右节点，也就是根节点的前置节点
+        TreeNode pre = new TreeNode(); //表示根节点的左子树的最右节点，也就是根节点的前置节点
         while(root != null){
             //先实现将左子树的最右节点指向根节点
             if(root.left != null){
