@@ -84,6 +84,38 @@ class Solution {
 }
 ```
 
+使用栈的另外一种代码：
+```
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if(root == null){
+            return res;
+        }
+        
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(! stack.isEmpty()){
+            TreeNode node = stack.peek();
+            while(node.left != null){
+                stack.push(node.left);
+                TreeNode temp = node;
+                node = node.left;
+                temp.left = null;
+            }
+            TreeNode now = stack.pop();
+            // System.out.println("The now is:"+now.val);
+            res.add(now.val);
+            if(now.right != null){
+                stack.push(now.right);
+            }
+        }
+        
+        return res;
+    }
+    
+}
+```
 
 思路3：还可以使用莫里斯遍历，使用O(n)的时间复杂度，也就是将根节点的左子树的最右节点指向根节点。
 
