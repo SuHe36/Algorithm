@@ -20,6 +20,12 @@ n 是 32 位有符号整数，其数值范围是 [−231, 231 − 1] 。
 
 思路：用二分法来做
 
+这题的难点在于，要从n到1的过程来做。我们平时做的比较多的都是从1到n来做的。
+
+那么这种题的解法，就是假设已经知道了n/2的结果，用它来计算n的结果。
+
+并且在最终的dfs循环中，用n==1或者n=0来做最底层的结果。
+
 代码：
 ```
 class Solution:
@@ -36,4 +42,25 @@ class Solution:
             return num*num*x
         else:
             return num*num
+```
+
+
+真正的二分法，这种写法需要自己代入具体的case来解析。
+
+代码如下：
+```
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n < 0:
+            x = 1/x
+            n = -n
+
+        res = 1
+        while n:
+            if n%2 == 1:
+                res = res*x
+            x = x*x
+            n = n//2
+        
+        return res
 ```
