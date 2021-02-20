@@ -13,6 +13,8 @@ Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cu
 
 
 ## 思路
+给与一个字符串，将它进行切分，使得切分的每一部分都是一个回文串，求最少的切分次数。
+
 用动态规划做，如果s[j:i]是回文串的话，dp[i]=Math.min(dp[i], dp[j-1]+1)
 
 

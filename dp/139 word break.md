@@ -22,6 +22,8 @@ Explanation: Return true because "applepenapple" can be segmented as "apple pen 
 
 
 思路：
+给与一个字符串和一个词典，判断当前字符串能否用词典切分。
+
 用动态规划做,第i个字符，可以由(0,i-1)任意一个位置切割形成新的字符，然后用前面的字符组成新的结果。
 dp[i] = dp[i]||(dp[j]&&s.substring(j,i+1)是否在dict中 )
 
