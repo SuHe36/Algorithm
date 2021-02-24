@@ -64,3 +64,32 @@ class Solution:
         
         return res
 ```
+
+
+
+使用递归的方法来做，主要是只算一次mypow(x,n//2)，代码如下：
+```
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 1:
+            return x
+        elif n == 0:
+            return 1
+        
+        flag = 0
+        if n < 0:
+            flag = 1
+            n = -n
+        
+        ans = self.myPow(x, n//2)
+
+        if n %2 ==0:
+            res =  ans*ans
+        else:
+            res = x*ans*ans
+        
+        if flag == 1:
+            return 1/res
+        else:
+            return res
+```
